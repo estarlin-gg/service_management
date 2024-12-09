@@ -32,7 +32,7 @@ namespace ServiceManagementAPI.Controllers
         public async Task<IActionResult> GetTechnicianById(int id)
         {
             if (User.IsInRole("Technician") && id != int.Parse(User.FindFirst("id").Value))
-                return Forbid(); // Los técnicos solo pueden ver su propio perfil
+                return Forbid(); 
 
             var technician = await _technicianService.GetTechnicianByIdAsync(id);
             return Ok(technician);
